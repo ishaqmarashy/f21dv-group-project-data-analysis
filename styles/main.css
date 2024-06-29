@@ -1,0 +1,369 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #f2f7ff; /* Light blue background */
+    color: #333; /* Dark font color */
+}
+
+.header {
+    background-color: #3182bd; /* Blue header background */
+    padding: 10px 20px;
+    text-align: center;
+    color: white; /* White font color */
+}
+
+.container {
+    display: flex;
+    flex: 1;
+}
+
+.sidebar {
+    background-color: #eeeeee; /* Light gray sidebar background */
+    padding: 20px;
+    width: 160px;
+}
+
+
+.content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Add gap between elements */
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.pin_text {
+    text-anchor: middle;
+    font-size: 12px;
+}
+
+svg text.legend{
+    font-size: 14px;
+    font-family: var(--font-text);
+    color: var(--main-color);
+}
+
+div.tooltip {
+    border: solid 2px;
+    border-radius: 5px;
+    pointer-events: none;
+    position: absolute;
+    padding: 5px;
+    background-color:white;
+}
+
+svg.map path.regions{
+    fill: #eeeeee;
+    stroke: rgb(70,135,170);
+    stroke-width: 1px;
+}
+
+svg.map path.regions.back{
+    fill-opacity: 0;
+    stroke-width: 0.5px;
+}
+
+.pie_filter{
+    top: -300px;
+    position: relative;
+    display: block;
+    flex: 1; 
+    max-width: 100%;
+}
+
+.first-row {
+    display: flex;
+    flex: 1; 
+    flex-direction: row;
+    align-items: stretch; 
+    /* gap: 10px;  */
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.row > div ,.row  {
+    flex: 1; 
+}
+
+#map{
+
+    flex: 4;
+
+}
+
+#statisticsContainer {
+    background-color: #f0f4f8; /* Light grey-blue to give a subtle texture */
+    display: flex;
+    
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around; /* Use space-around for equal spacing */
+    text-align: center;
+    padding: 20px; /* Add padding for internal spacing */
+    border-radius: 10px; /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    margin: 0; /* Margin top and bottom for external spacing */
+    height: calc(100% - 40px);
+}
+
+#statisticsContainer > .statistic-card {
+    background-color: #ffffff; /* Keep cards white for cleanliness */
+    display: flex; /* Do not grow or shrink but allow basis to be auto */
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 10px; /* Margin around cards */
+    padding: 15px 25px; /* Padding inside cards */
+    align-items: center; /* Center items horizontally in the card */
+    justify-content: center; /* Center items vertically in the card */
+    text-align: center; /* Ensure the text within items is centered */
+    border-radius: 5px; /* Rounded corners for cards */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Slightly more pronounced shadow for the cards */
+    width: 80%; /* Set a width so they do not stretch too wide */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for smooth effect on hover */
+}
+
+#statisticsContainer > .statistic-card:hover {
+    transform: translateY(-5px); /* Move up slightly on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Increase shadow on hover for lifting effect */
+}
+
+/* Optional: Adjust the padding of the container if you want spacing between cards */
+#statisticsContainer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* Use :not pseudo-class to add spacing between cards */
+#statisticsContainer > .statistic-card:not(:last-child) {
+    margin-bottom: 10px; /* This adds spacing only between cards, not after the last one */
+}
+
+.value {
+    color: #007bff; /* Blue for the value to stand out */
+    font-size: 3em; /* Larger font size for value */
+    font-weight: bold; /* Make the value bold */
+    margin-bottom: 5px; /* Spacing between value and label */
+}
+
+.label {
+    color: #343a40; /* Dark grey for the label for contrast */
+    font-size: .8em; /* Regular font size for label */
+    text-transform: uppercase; /* Uppercase label for visual distinction */
+    letter-spacing: 1px; /* Spacing between letters for readability */
+}
+
+
+/* add some black border on hover */
+path.arc:hover,
+g circle:hover,
+g rect.bar:hover{
+    stroke: rgb(0,0,95);
+    stroke-width: 2px;
+}
+
+/* add some black border on hover */
+g path.arc,
+g circle,
+g rect.bar{
+    stroke: black;
+    stroke-width: 0.5px;
+}
+g.points g > circle{
+    stroke: black;
+    stroke-width: 0.1px;
+}
+
+path.arc:hover,
+g circle:hover,
+g rect.bar:hover{
+    stroke: rgb(0,0,75);
+    stroke-width: 2px;
+}
+
+#graphs-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.graph-card {
+    border: 1px solid #ddd;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 10px;
+    width: calc(50% - 20px);
+    background-color: #fff;
+}
+
+.graph-card-header {
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    font-weight: bold;
+}
+
+.graph-card-body {
+    padding: 15px;
+}
+
+/* Make the SVG container fill the card body */
+#histogram {
+    display: block; /* Removes bottom margin/whitespace inherent to inline elements */
+    width: 100%;    /* Responsive width */
+    height: auto;   /* Maintain aspect ratio */
+    max-height: 100%; /* Optional, but can help contain the SVG within its parent */
+}
+
+select {
+    padding: 5px 5px 5px 0px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    width: 150px;
+    margin-right: 10px;
+}
+
+/* /https://copy-paste-css.com/ */
+/* Apply styling specific to the filter button */
+#filterButton,button {
+    padding-top: 15px;
+    padding: 8px 20px;
+    background-color: #3182bd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+    width: 150px;
+
+}
+
+#clearFiltersButton,button {
+    padding-top: 15px;
+    padding: 8px 20px;
+    background-color: #3182bd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+    width: 150px;
+
+}
+
+button,#Back{
+    border-radius: 0px;
+    padding: 5px;
+    margin: 0px;
+
+}
+
+.pie_filter_container {
+    display: flex;
+    justify-content: center; /* Center the buttons container horizontally */
+}
+
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed; /* Cover the entire viewport */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);  /* White background */
+    z-index: 1000; /* Ensure it's above other content */
+  }
+  
+  .spinner {
+    border: 16px solid #f3f3f3; /* Light grey background */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  
+
+.pie_filter_button {
+    margin: 5px; /* Spacing between buttons */
+    padding: 10px 15px; /* Padding inside the buttons */
+    border: 1px solid #ccc; /* Border for buttons */
+    border-radius: 5px; /* Rounded corners for buttons */
+    background-color: #3182bd; /* Button background color */
+    color: white; /* Button text color */
+    text-align: center; /* Center text inside the button */
+    line-height: 1.5; /* Line height for button text */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    text-decoration: none; /* Remove text decoration */
+    flex: 0 0 auto; /* Do not allow the buttons to grow or shrink */
+}
+
+.pie_filter_button:hover {
+    background-color: #0056b3; /* A darker shade for hover state */
+}
+
+.pie_filter_button:active {
+    background-color: #003865; /* An even darker shade for active state */
+}
+
+
+.histogram-vis{
+    align-items: center;
+}
+.stackedBar-vis{
+    align-items: center;
+}
+/* Hover effect for the filter button */
+#filterButton:hover ,button:hover{
+    background-color: #2b3889;
+}
+
+.metrics {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column; /* Display items vertically */
+    align-items: center; /* Align items to the center */
+    gap: 50px; /* Increase gap between metrics */
+}
+.metric {
+    position: relative;
+    background-color: #3f88c5; /* Blue metric background */
+    color: white; /* White font color */
+    height: 80px; /* Decrease metric height */
+    width: 150px; /* Decrease metric width */
+    padding: 10px; /* Add padding for spacing */
+    align-items: center;
+    border-radius: 5px; /* Rounded corners */
+}
+
+.metric h3 {
+    margin-top: 0;
+}
+

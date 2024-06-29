@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Airbnb Dashboard</title>
+    <script src="../lib/d3/d3.v7.min.js"></script>
+    <script src="../lib/d3-geo-projection.v4.min.js"></script>
+    <script src="../lib/topojson-client.v3.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Loading styles -->
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+    <div id="loader-container" class="loader-container">
+        <div id="loading-spinner" class="spinner"></div>
+    </div>
+    
+
+
+<div>
+<div class="header">
+    <h1>Airbnb Europe Dashboard</h1>
+</div>
+
+<div class="container">
+    <div class="sidebar">
+        <!-- Sidebar content like filters can go here -->
+        <h2>Filters</h2>
+        <label for="priceFilter">Price Range:</label>
+        <select id="priceFilter">
+            <option value="0-20000">All Prices</option>
+            <option value="0-500">0 - 500</option>
+            <option value="501-1000">501 - 1000</option>
+            <option value="1001 - 5000">1001 - 5000</option>
+            <option value="5001 - 10000">5001 - 10000</option>
+            <option value="10001 - 15000">10001 - 15000</option>
+            <option value="15001 - 20000">15001 - 20000</option>
+        </select>
+        <label for="dayFilter">Day:</label>
+        <select id="dayFilter">
+            <option value="all">Both</option>
+            <option value="weekend">Weekend</option>
+            <option value="weekday">Weekday</option>
+        </select>
+        <label for="capcityFilter">Occupancy:</label>
+        <select id="capcityFilter">
+            <option value="all">All</option>
+            <option value="2">2 ocupants</option>
+            <option value="3">3 ocupants</option>
+            <option value="4">4 ocupants</option>
+            <option value="5">5 ocupants</option>
+            <option value="6">6 ocupants</option>
+        </select>
+        <label for="businessFilter">Purpose:</label>
+        <select id="businessFilter">
+            <option value="all">Both</option>
+            <option value="TRUE">Business suite</option>
+            <option value="FALSE">Accomodation</option>
+        </select>
+        <label for="bedroomFilter">Bedroom Count:</label>
+        <select id="bedroomFilter">
+            <option value="all">All</option>
+            <option value="0">Studio</option>
+            <option value="1">1 bedroom</option>
+            <option value="2">2 bedroom</option>
+            <option value="3">3 bedroom</option>
+            <option value="4">4 bedroom</option>
+            <option value="5">5 bedroom</option>
+            <option value="6">6 bedroom</option>
+            <option value="7">7 bedroom</option>
+            <option value="8">8 bedroom</option>
+            <option value="9">9 bedroom</option>
+            <option value="10">10 bedroom</option>
+        </select>
+        <label for="typeFilter">Room Type:</label>
+        <select id="typeFilter">
+            <option value="all">All</option>
+            <option value="Private room">Private room</option>
+            <option value="Entire home/apt">Entire home/apt</option>
+            <option value="Shared room">Shared room</option>
+        </select>
+        <label for="hostFilter">Host Requirement:</label>
+        <select id="hostFilter">
+            <option value="all">Both</option>
+            <option value=true>Superhost</option>
+            <option value=false>Normal</option>
+        </select>
+        <button id="filterButton">Filter Data</button>
+        <button id="clearFiltersButton">Clear Filters</button>
+    </div>
+    <div class="content">
+        <div class="first-row">
+            <div id="map" ></div>
+            <div id="statisticsContainer"></div>
+        </div>
+        <div class="row">
+            <div class="graph-card">
+                <div class="graph-card-header">Guest Satisfaction Distribution</div>
+                <div class="graph-card-body">
+                    <div id="histogram"></div>
+                </div>
+            </div>
+            <div class="graph-card"  id="stackedBarChart">
+                <div class="graph-card-header">Average Metro Proximity to City Centers Across European Capitals</div>
+                <div class="graph-card-body">
+                    <div id="stackedBar"></div>
+                </div>
+            </div>
+            <div class="graph-card" id="scatterPlotCard">
+                <div class="graph-card-header">Correlation of City Distances to Metro Station Proximity</div>
+                <div class="graph-card-body">
+                    <div id="scatterPlot"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="graph-card" id = "pieCard">
+                <div class="graph-card-header">Interactive Breakdown by Classification</div>
+                <div class="graph-card-body">
+                    <div id="pie"></div>
+                </div>
+            </div>
+            <div class="graph-card" id = "stackedBar2Card">
+                <div class="graph-card-header">Comparison of Average Airbnb Rental Prices in European Cities</div>
+                <div class="graph-card-body">
+                    <div id="stackedBar2"></div>
+                </div>
+            </div>
+            <div class="graph-card" id = "barChartCard">
+                <div class="graph-card-header">Availability of Rental Types</div>
+                <div class="graph-card-body">
+                    <div id="barChart" ></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="graph-card">
+                <div class="graph-card-header">Hospitality Index Correlation Plot</div>
+                <div class="graph-card-body">
+                    <div id="scatterPlot2"></div>
+                </div>
+            </div>
+            <div class="graph-card">
+                <div class="graph-card-header">Hotel Cleanliness and Satisfaction Analysis</div>
+                <div class="graph-card-body">
+                     <div id="scatterPlot1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script type="module" src="scripts/main.js"></script> 
+
+</body>
+</html>
